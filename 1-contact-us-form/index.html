@@ -3,13 +3,72 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      /* write CSS here */
-    </style>
+    <title>Contact us</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Mona+Sans:ital,wght@0,200..900;1,200..900&family=Montez&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body></body>
-  <script>
-    // write javascript here
-  </script>
+  <body>
+    <header>
+      <h1>Contact sales</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, aperiam.
+      </p>
+    </header>
+
+    <section id="contact">
+      <form action="">
+        <div class="fullname">
+          <div class="inputcontainer">
+            <label for="fname">First name</label>
+            <input type="text" name="fname" id="fname" />
+          </div>
+          <div class="inputcontainer">
+            <label for="lname">Last name</label>
+            <input type="text" name="lname" id="lname" />
+          </div>
+        </div>
+        <div class="inputcontainer">
+          <label for="company">Company</label>
+          <input type="text" name="company" id="company" />
+        </div>
+        <div class="inputcontainer">
+          <label for="mail">Email</label>
+          <input type="email" name="mail" id="mail" />
+        </div>
+        <div class="inputcontainer">
+          <label for="phone">Phone number</label>
+          <div class="phone-container">
+            <select name="country" id="country">
+              <option value="us">US</option>
+              <option value="IN">IN</option>
+            </select>
+            <input type="tel" name="phone" id="phone" />
+          </div>
+        </div>
+        <div class="inputcontainer">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="4" cols="50"></textarea>
+        </div>
+
+        <div class="switchcontainer">
+          <label class="switch">
+            <input type="checkbox" />
+            <span class="slider round"></span>
+          </label>
+          <p class="terms">
+            By selecting this, you agree to our <a href="#">privacy policy</a>
+          </p>
+        </div>
+
+        <input type="submit" value="Let's talk" />
+      </form>
+      <div class="glow purpleshade"></div>
+      <div class="glow pinkshade"></div>
+    </section>
+  </body>
 </html>
