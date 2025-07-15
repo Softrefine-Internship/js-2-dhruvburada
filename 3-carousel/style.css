@@ -1,62 +1,68 @@
-.slide
-{
-    height: 700px;
-    width: 100%;
-    object-fit: cover;
-    display: none;
-}
-
-.carousel
-{
-    width: 100%;              /* set a fixed width or use max-width */
-    margin: 10px auto;
-   position: relative;
-   
-}
-
-.slider
-{
-   
-    width: 100%;
-    object-position: center;
-    
-}
-
-
-.prev
-{
-    position: absolute;
-    top: 50%;
-    left: 0px;
-    border-radius: 50%;
-    background-color: rgba(128, 128, 128, 0.333);
-    border:  none;
-    color: white;
-    padding: 5px 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
+.slide {
+  height: 700px;
+  width: 100%;
+  width: 50vw;
+  object-fit: cover;
+  display: none;
+  object-position: center;
+  margin: 0 auto;
 
 }
 
-.next
-{
-    position: absolute;
-    top: 50%;
-    right: 0px;
-    border-radius: 50%;
-    background-color: rgba(128, 128, 128, 0.333);
-    border:  none;
-    color: white;
-    padding: 5px 10px;
-    transform: translateY(-50%);
-    cursor: pointer;
+.carousel {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  margin: 10px auto;
+  align-items: center;
+  justify-content: center;
+
+
+
+}
+
+.slider {
+  position: relative;
+  width: 50vw;
+  object-position: center;
+  margin: 0 auto;
 
 }
 
 
-.active
-{
-    display: block
+.prev {
+  position: absolute;
+  top: 50%;
+  left: 14px;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.333);
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+
+}
+
+.next {
+  position: absolute;
+  top: 50%;
+  right: 14px;
+  border-radius: 50%;
+  background-color: rgba(128, 128, 128, 0.333);
+  border: none;
+  color: white;
+  padding: 15px 20px;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+
+
+
+
+.active {
+  display: block
 }
 
 .dots {
@@ -80,5 +86,5 @@
 }
 
 .dot.active {
-  background-color: #717171;
+  background-color: white;
 }
