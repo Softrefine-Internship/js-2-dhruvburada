@@ -1,0 +1,29 @@
+.tabs {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border-bottom: solid gray 1px;
+}
+
+.tab {
+    padding: 20px 15px;
+}
+
+.tab-content {
+    background-color: #f9fafb;
+    padding: 1rem 2rem;
+    max-width: 600px;
+    margin: 0 auto;
+    display: none;
+
+}
+
+body {
+    font-family: "Inter", sans-serif;
+    color: #37414c;
+}
+
+span {
+    color: black;
+}

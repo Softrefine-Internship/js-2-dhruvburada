@@ -4,12 +4,76 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <style>
-      /* write CSS here */
-    </style>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
   </head>
-  <body></body>
+  <body>
+    <div class="tabs-container">
+      <ul class="tabs">
+        <li class="tab">Profile</li>
+        <li class="tab">Dashboard</li>
+        <li class="tab">Settings</li>
+        <li class="tab">Contacts</li>
+      </ul>
+      <div class="tab-content-container">
+        <div class="tab-content">
+          This is some placeholder content
+          <span>Profile tab's associated content.</span>Clicking another tab
+          will toggle the visiblity of this one for the next. The tab Javascript
+          swaps classes to control the control the content viviblity and
+          styling.
+        </div>
+        <div class="tab-content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+          animi, obcaecati exercitationem est doloremque doloribus minima
+          quaerat officia quo, sequi minus aliquid repellat? Tenetur aspernatur
+          doloribus corporis. Voluptate, itaque nemo.
+        </div>
+        <div class="tab-content">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quas unde
+          repudiandae rem omnis placeat totam magni? Repudiandae deleniti,
+          minima odit libero sequi vero quibusdam beatae temporibus repellendus
+          odio nemo iusto.
+        </div>
+        <div class="tab-content">
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+          dolorem eius maiores. Deleniti id aliquid velit deserunt amet at sed
+          ad eum? Ducimus non enim sequi aspernatur earum explicabo ab?
+        </div>
+      </div>
+    </div>
+  </body>
   <script>
-    // write javascript here
+    let tabs = document.querySelectorAll(".tab");
+    let index = 0;
+    console.log(tabs);
+    tabs = Array.from(tabs);
+    tabs.forEach((element, index) => {
+      element.addEventListener("click", () => showContent(index));
+      console.log(index);
+    });
+
+    function showContent(index) {
+      tabs.forEach((element, i) => {
+        element.style.border = "none";
+        element.style.color = "#37414c";
+      });
+
+      tabs[index].style.color = "#227aef";
+      tabs[index].style.borderBottom = "2px solid #227aef";
+      let tabContent = document.querySelectorAll(".tab-content");
+
+      console.log(tabContent);
+
+      tabContent.forEach((element, i) => {
+        element.style.display = "none";
+      });
+      tabContent[index].style.display = "block";
+    }
   </script>
 </html>
