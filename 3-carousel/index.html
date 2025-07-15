@@ -3,18 +3,85 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      /* write CSS here */
-    </style>
+    <title>Carousel</title>
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <div class="image-container">
-      <img src="https://picsum.photos/200/300" alt="image" />
-      <img src="" alt="" />
+    <div class="carousel">
+      <div class="slider">
+        <img
+          src="./assets/pexels-pixabay-534271.jpg"
+          alt="slide 1"
+          class="slide slide1"
+        />
+        <img
+          src="./assets/pexels-pixabay-534283.jpg"
+          alt="slide 2"
+          class="slide slide2"
+        />
+        <img
+          src="./assets/pexels-pixabay-534285.jpg"
+          alt="slide 3"
+          class="slide slide3"
+        />
+      </div>
+      <button class="prev" id="prev">
+        <i class="fas fa-angle-left" style="font-size: 36px"></i>
+      </button>
+      <button class="next" id="next"">
+        <i class="fas fa-angle-right" style="font-size: 36px"></i>
+      </button>
+      <div class="dots"></div>
     </div>
   </body>
+
   <script>
-    // write javascript here
+    let slides = document.querySelectorAll(".slide");
+    const dotsContainer = document.querySelector(".dots");
+    const nextBtn = document.getElementById("next");
+    const prevBtn = document.getElementById("prev");
+    let index = 0;
+    let dots = null;
+
+    function initializeSlider() {
+      slides[index].classList.add("active");
+      slides.forEach((_, i) => {
+        const dot = document.createElement("span");
+        dot.classList.add("dot");
+        if (i === 0) dot.classList.add("active");
+        dotsContainer.appendChild(dot);
+      });
+      dots = document.querySelectorAll(".dot");
+    }
+
+    function nextSlide() {
+      dots[index].classList.remove("active");
+      slides[index].classList.remove("active");
+      if (index >= slides.length - 1) {
+        index = 0;
+        slides[index].classList.add("active");
+      } else {
+        console.log(`index ${index} classlist ${slides}`);
+        index++;
+        slides[index].classList.add("active");
+        dots[index].classList.add("active");
+      }
+    }
+
+    function prevSlide() {
+      slides[index].classList.remove("active");
+      if (index <= 0) {
+        index = slides.length - 1;
+        slides[index].classList.add("active");
+        return;
+      } else {
+        index--;
+        slides[index].classList.add("active");
+      }
+    }
+
+    nextBtn.addEventListener("click",()=>nextSlide());
+    prevBtn.addEventListener("click",()=>prevSlide());
+    document.addEventListener("DOMContentLoaded", initializeSlider);
   </script>
 </html>
