@@ -1,0 +1,65 @@
+body {
+    font-family: "Inter", sans-serif;
+    color: #444444;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.accordion {
+    width: 100%;
+    max-width: 750px;
+    margin: 50px auto;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    overflow: hidden;
+    font-family: sans-serif;
+}
+
+.accordion-item {
+    border-bottom: 1px solid #ccc;
+
+}
+
+.accordion-label {
+    padding: 18px;
+}
+
+
+.accordion-label {
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.4s ease, opacity 0.3s ease;
+
+}
+
+.accordion-content.active {
+    max-height: 500px;
+    /* adjust based on content */
+    opacity: 1;
+    padding: 10px 19px;
+}
+
+/* Optional: Rotate the icon */
+.accordion-label.active i {
+    transform: rotate(180deg);
+    transition: transform 0.3s ease;
+}
+
+.text-red {
+    color: red;
+}
+
+label.accordion-label.active {
+    color: #227aef;
+    border-bottom: solid 1px #ccc;
+}

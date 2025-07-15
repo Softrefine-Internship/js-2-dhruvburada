@@ -50,14 +50,20 @@
   </body>
   <script>
     let tabs = document.querySelectorAll(".tab");
+    let tabContent = document.querySelectorAll(".tab-content");
     let index = 0;
-    console.log(tabs);
-    tabs = Array.from(tabs);
+
     tabs.forEach((element, index) => {
       element.addEventListener("click", () => showContent(index));
       console.log(index);
     });
 
+    function TabsDefault() {
+      tabContent[index].style.display = "block";
+      tabs[index].style.color = "#227aef";
+      tabs[index].style.borderBottom = "2px solid #227aef";
+    }
+    document.addEventListener("DOMContentLoaded", () => TabsDefault());
     function showContent(index) {
       tabs.forEach((element, i) => {
         element.style.border = "none";
@@ -66,7 +72,6 @@
 
       tabs[index].style.color = "#227aef";
       tabs[index].style.borderBottom = "2px solid #227aef";
-      let tabContent = document.querySelectorAll(".tab-content");
 
       console.log(tabContent);
 
