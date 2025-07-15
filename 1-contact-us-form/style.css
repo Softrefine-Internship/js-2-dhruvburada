@@ -210,3 +210,18 @@ form {
 h1 {
     margin-bottom: 13px;
 }
+
+.hidden {
+    display: none;
+}
+
+.invalid {
+    border-color: red;
+}
+
+.error {
+    color: red;
+    font-size: 0.9rem;
+    margin-top: 2px;
+    display: block;
+}

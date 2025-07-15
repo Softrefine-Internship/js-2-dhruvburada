@@ -4,12 +4,166 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://use.typekit.net/mrt3dnj.css" />
     <style>
-      /* write CSS here */
+      * {
+        margin: 0px;
+        padding: 0px;
+      }
+      body {
+        font-family: "quicksand", sans-serif;
+
+        font-style: normal;
+        transition: all ease-in 400ms;
+      }
+      .modal {
+        max-width: 493px;
+
+        padding: 1rem 2rem;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        flex-direction: row;
+        gap: 20px;
+        position: absolute;
+        padding-top: 38px;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        display: none;
+        background-color: white;
+        transition: all ease-in 400ms;
+      }
+
+      .icon {
+        aspect-ratio: 1;
+        background-color: #e2262948;
+        color: red;
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2rem;
+      }
+
+      .heading,
+      .desc {
+        margin-bottom: 9px;
+        font-weight: 600;
+        letter-spacing: 0.5px;
+      }
+
+      .desc {
+        color: rgb(63, 62, 62);
+        line-height: 1.2;
+        font-weight: 500;
+      }
+      .button-conainer {
+        justify-self: flex-end;
+        margin-top: 20px;
+      }
+
+      .btn {
+        padding: 0.7rem 1rem;
+        border-radius: 6px;
+        font-weight: 600;
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        color: white;
+
+        background-color: rgb(209, 2, 2);
+        border: none;
+      }
+
+      .btn-secondary {
+        background-color: white;
+        border: solid 1px gray;
+      }
+
+      .close-icon {
+        position: absolute;
+        right: 22px;
+        top: 18px;
+        font-size: 1.55rem;
+        cursor: pointer;
+      }
+
+      .open-modal {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
     </style>
+
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/regular/style.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.1/src/fill/style.css"
+    />
   </head>
-  <body></body>
+  <body>
+    <button id="open-modal" class="open-modal btn btn-primary">
+      Deactivate Account
+    </button>
+    <div class="modal" id="modal">
+      <div class="close-icon">
+        <i class="ph ph-x-circle close" id="close-btn"></i>
+      </div>
+
+      <div class="icon">
+        <i class="ph ph-warning"></i>
+      </div>
+      <div class="text-contnent">
+        <h3 class="heading">Deactivate account</h3>
+        <p class="desc">
+          Are you sure you want to Deactivate your account? All of your data
+          will be permanently removed from our servers forever.This action can
+          not be undone
+        </p>
+        <div class="button-conainer">
+          <button class="btn btn-secondary" id="cancel-btn">Cancel</button>
+          <button class="btn btn-primary" id="deactivate-btn">
+            Deactivate
+          </button>
+        </div>
+      </div>
+    </div>
+  </body>
   <script>
-    // write javascript here
+    let modal = document.getElementById("modal");
+    let body = document.body;
+    let closeBtn = document.getElementById("close-btn");
+    let openBtn = document.getElementById("open-modal");
+    let deactivateBtn = document.getElementById("deactivate-btn");
+    let cancelBtn = document.getElementById("cancel-btn");
+
+    function Open() {
+      body.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
+      modal.style.display = "flex";
+    }
+
+    function Close() {
+      body.style.backgroundColor = "#ffff";
+      modal.style.display = "none";
+    }
+
+    openBtn.addEventListener("click", (e) => Open(e));
+    closeBtn.addEventListener("click", (e) => Close(e));
+    cancelBtn.addEventListener("click", (e) => Close(e));
+    deactivateBtn.addEventListener("click", (e) => Close(e));
   </script>
 </html>

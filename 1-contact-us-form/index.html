@@ -18,27 +18,32 @@
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim, aperiam.
       </p>
+      <span class="error"> </span>
     </header>
 
     <section id="contact">
-      <form action="">
+      <form id="contact-form">
         <div class="fullname">
           <div class="inputcontainer">
             <label for="fname">First name</label>
             <input type="text" name="fname" id="fname" />
+            <span class="error" id="fname-error"></span>
           </div>
           <div class="inputcontainer">
             <label for="lname">Last name</label>
             <input type="text" name="lname" id="lname" />
+            <span class="error" id="lname-error"></span>
           </div>
         </div>
         <div class="inputcontainer">
           <label for="company">Company</label>
           <input type="text" name="company" id="company" />
+          <span class="error" id="company-error"></span>
         </div>
         <div class="inputcontainer">
           <label for="mail">Email</label>
           <input type="email" name="mail" id="mail" />
+          <span class="error" id="mail-error"></span>
         </div>
         <div class="inputcontainer">
           <label for="phone">Phone number</label>
@@ -49,26 +54,167 @@
             </select>
             <input type="tel" name="phone" id="phone" />
           </div>
+          <span class="error" id="phone-error"></span>
         </div>
         <div class="inputcontainer">
           <label for="message">Message</label>
           <textarea id="message" name="message" rows="4" cols="50"></textarea>
+          <span class="error" id="message-error"></span>
         </div>
 
         <div class="switchcontainer">
           <label class="switch">
-            <input type="checkbox" />
+            <input type="checkbox" id="checkbox" />
             <span class="slider round"></span>
           </label>
           <p class="terms">
             By selecting this, you agree to our <a href="#">privacy policy</a>
           </p>
         </div>
-
-        <input type="submit" value="Let's talk" />
+        <span class="error" id="checkbox-error"></span>
+        <input type="submit" value="Let's talk" id="submit" />
       </form>
       <div class="glow purpleshade"></div>
       <div class="glow pinkshade"></div>
+
+      <div class="table hidden">
+        <table border="1">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Company</th>
+              <th>Email</th>
+              <th>Phone Number</th>
+              <th>Country</th>
+              <th>Message</th>
+              <th>Agreed to Privacy Policy</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Data will come here -->
+          </tbody>
+        </table>
+      </div>
     </section>
   </body>
+  <script>
+    const form = document.getElementById("contact-form");
+    const fields = {
+      fname: {
+        element: document.getElementById("fname"),
+        error: document.getElementById("fname-error"),
+        validate: (val) => val.trim() !== "",
+        message: "First name is required.",
+      },
+      lname: {
+        element: document.getElementById("lname"),
+        error: document.getElementById("lname-error"),
+        validate: (val) => val.trim() !== "",
+        message: "Last name is required.",
+      },
+      company: {
+        element: document.getElementById("company"),
+        error: document.getElementById("company-error"),
+        validate: (val) => val.trim() !== "",
+        message: "Company name is required.",
+      },
+      mail: {
+        element: document.getElementById("mail"),
+        error: document.getElementById("mail-error"),
+        validate: (val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim()),
+        message: "Enter a valid email address.",
+      },
+      phone: {
+        element: document.getElementById("phone"),
+        error: document.getElementById("phone-error"),
+        validate: (val) => /^[0-9\s\-()+]{7,}$/.test(val.trim()),
+        message: "Enter a valid phone number.",
+      },
+      message: {
+        element: document.getElementById("message"),
+        error: document.getElementById("message-error"),
+        validate: (val) => val.trim() !== "",
+        message: "Message can not be empty.",
+      },
+      checkbox: {
+        element: document.getElementById("checkbox"),
+        error: document.getElementById("checkbox-error"),
+        validate: () => document.getElementById("checkbox").checked,
+        message: "You must agree to the privacy policy.",
+      },
+    };
+
+    Object.keys(fields).forEach((key) => {
+      const field = fields[key];
+      const eventType = key === "checkbox" ? "change" : "focusout";
+
+      field.element.addEventListener(eventType, () => {
+        validateField(key);
+      });
+    });
+
+    function validateField(key) {
+      const field = fields[key];
+      const value = field.element.value;
+      const isValid = field.validate(value);
+
+      if (!isValid) {
+        field.element.classList.add("invalid");
+        field.element.classList.remove("valid");
+        field.error.textContent = field.message;
+        return false;
+      } else {
+        field.element.classList.remove("invalid");
+        field.element.classList.add("valid");
+        field.error.textContent = "";
+        return true;
+      }
+    }
+
+    function validateAllFields() {
+      let isFormValid = true;
+      for (const key in fields) {
+        const isValid = validateField(key);
+        if (!isValid) isFormValid = false;
+      }
+      return isFormValid;
+    }
+
+    // On submit
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (!validateAllFields()) {
+        return;
+      }
+
+      // Build table
+      const formData = {
+        fname: fields.fname.element.value,
+        lname: fields.lname.element.value,
+        company: fields.company.element.value,
+        mail: fields.mail.element.value,
+        country: document.getElementById("country").value,
+        phone: fields.phone.element.value,
+        message: fields.message.element.value,
+        checkbox: fields.checkbox.element.checked ? "Yes" : "No",
+      };
+
+      const row = `
+        <tr>
+          <td>${formData.fname}</td>
+          <td>${formData.lname}</td>
+          <td>${formData.company}</td>
+          <td>${formData.mail}</td>
+          <td>${formData.country}</td>
+          <td>${formData.phone}</td>
+          <td>${formData.message}</td>
+          <td>${formData.checkbox}</td>
+        </tr>
+      `;
+      document.querySelector("tbody").innerHTML = row;
+      document.querySelector(".table").classList.remove("hidden");
+      console.log("Submitted Data:", formData);
+    });
+  </script>
 </html>
