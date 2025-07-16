@@ -3,13 +3,62 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <style>
-      /* write CSS here */
-    </style>
+    <title>Omnifood Navbar</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script
+      src="https://kit.fontawesome.com/57d716799f.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
-  <body></body>
+  <body>
+    <header class="navbar" id="navbar">
+      <div class="logo" id="logo">
+        <span>OMNIF</span><span class="infinity">∞</span><span>D</span>
+      </div>
+
+      <nav class="nav-links" id="navLinks">
+        <a href="#">How it works</a>
+        <a href="#">Meals</a>
+        <a href="#">Testimonials</a>
+        <a href="#">Pricing</a>
+      </nav>
+      <a href="#" class="btn-primary mobile-btn">Try for free</a>
+      <!-- Hamburger (open) icon -->
+      <div class="menu" id="openMenu">
+        <i class="fa-solid fa-bars"></i>
+      </div>
+
+      <!-- Close (X) icon -->
+      <div class="menu hide" id="closeMenu">
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+    </header>
+  </body>
+
   <script>
-    // write javascript here
+    const openMenu = document.getElementById("openMenu");
+    const closeMenu = document.getElementById("closeMenu");
+    const navLinks = document.getElementById("navLinks");
+    const logo = document.getElementById("logo");
+    const navbar = document.getElementById("navbar");
+
+    openMenu.addEventListener("click", () => {
+      navLinks.classList.add("active");
+      openMenu.classList.add("hide");
+      closeMenu.classList.remove("hide");
+      logo.classList.add("hide");
+      navbar.classList.add("active");
+    });
+
+    closeMenu.addEventListener("click", () => {
+      navLinks.classList.remove("active");
+      closeMenu.classList.add("hide");
+      openMenu.classList.remove("hide");
+      logo.classList.remove("hide");
+    });
   </script>
 </html>
