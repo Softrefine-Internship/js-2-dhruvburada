@@ -23,8 +23,8 @@
         transition: all ease-in 400ms;
       }
       .modal {
+        display: flex;
         max-width: 493px;
-
         padding: 1rem 2rem;
         box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
         flex-direction: row;
@@ -34,9 +34,15 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
-        display: none;
         background-color: white;
         transition: all ease-in 400ms;
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .modal.show {
+        opacity: 1;
+        pointer-events: auto;
       }
 
       .icon {
@@ -153,12 +159,12 @@
 
     function Open() {
       body.style.backgroundColor = "rgba(0, 0, 0, 0.2)";
-      modal.style.display = "flex";
+      modal.classList.add("show");
     }
 
     function Close() {
       body.style.backgroundColor = "#ffff";
-      modal.style.display = "none";
+      modal.classList.remove("show");
     }
 
     openBtn.addEventListener("click", (e) => Open(e));
