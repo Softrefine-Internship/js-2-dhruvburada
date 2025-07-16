@@ -58,27 +58,18 @@
       console.log(index);
     });
 
-    function TabsDefault() {
-      tabContent[index].style.display = "block";
-      tabs[index].style.color = "#227aef";
-      tabs[index].style.borderBottom = "2px solid #227aef";
-    }
-    document.addEventListener("DOMContentLoaded", () => TabsDefault());
+    document.addEventListener("DOMContentLoaded", () => {
+      showContent(0);
+    });
+
     function showContent(index) {
-      tabs.forEach((element, i) => {
-        element.style.border = "none";
-        element.style.color = "#37414c";
+      tabs.forEach((tab, i) => {
+        tab.classList.remove("active");
+        tabContent[i].classList.remove("active");
       });
 
-      tabs[index].style.color = "#227aef";
-      tabs[index].style.borderBottom = "2px solid #227aef";
-
-      console.log(tabContent);
-
-      tabContent.forEach((element, i) => {
-        element.style.display = "none";
-      });
-      tabContent[index].style.display = "block";
+      tabs[index].classList.add("active");
+      tabContent[index].classList.add("active");
     }
   </script>
 </html>

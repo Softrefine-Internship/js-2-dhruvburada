@@ -27,3 +27,12 @@ body {
 span {
     color: black;
 }
+
+.tab.active {
+    color: #227aef;
+    border-bottom: 2px solid #227aef;
+}
+
+.tab-content.active {
+    display: block;
+}
