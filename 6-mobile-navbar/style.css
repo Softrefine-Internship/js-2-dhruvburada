@@ -1,3 +1,4 @@
+/* Base setup */
 body {
     margin: 0;
     font-family: 'Inter', sans-serif;
@@ -6,18 +7,18 @@ body {
 
 .navbar {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     padding: 1rem 4rem;
     background-color: #fff4ec;
+    position: relative;
+    z-index: 1000;
 }
 
 .logo {
     font-weight: 600;
     font-size: 1.4rem;
     letter-spacing: 0.05rem;
-    display: flex;
-    align-items: center;
     color: #1a1a1a;
 }
 
@@ -35,7 +36,8 @@ body {
 .nav-links a {
     text-decoration: none;
     color: #1a1a1a;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 1rem;
     transition: color 0.2s ease;
 }
 
@@ -45,7 +47,7 @@ body {
 
 .btn-primary {
     background-color: #f36f22;
-    padding: 0.6rem 1.2rem;
+    padding: 0.6rem 1.4rem;
     border-radius: 8px;
     color: white;
     font-weight: 600;
@@ -57,64 +59,55 @@ body {
     background-color: #d85e1a;
 }
 
-.hide {
+.menu {
+    font-size: 1.8rem;
+    display: none;
+    cursor: pointer;
+}
+
+.menu.hide {
+    display: none;
+}
+
+.mobile-btn {
     display: none;
 }
 
 
 @media (max-width: 768px) {
-    .navbar {
-        padding: 1rem 2rem;
-    }
-
     .nav-links {
         display: none;
     }
 
-    .navbar.active {
-        flex-direction: column;
-        justify-content: center;
-        gap: 16px;
-    }
-
     .nav-links.active {
         display: flex;
-        align-items: center;
-        position: absolute;
         flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
         top: 0;
         left: 0;
-        right: 0;
         height: 100vh;
-        background-color: #fff4ec;
-        padding-top: 5rem;
+        width: 100vw;
+        background-color: #fff;
         gap: 2rem;
-        z-index: 1000;
-    }
-
-    .mobile-btn {
-        display: inline-block;
-        background-color: #f36f22;
-        padding: 0.6rem 1.2rem;
-        border-radius: 8px;
-        color: white;
-        font-weight: 600;
-        text-decoration: none;
+        font-size: 1.5rem;
+        z-index: 999;
     }
 
     .btn-primary {
         display: none;
     }
 
-    .menu {
-        font-size: 2rem;
-        cursor: pointer;
-        z-index: 1100;
-
+    .mobile-btn {
+        display: inline-block;
+        color: white;
     }
 
-    #openMenu {
+    .menu {
         display: block;
+        z-index: 1001;
+        margin-left: auto;
     }
 
     .logo.hide {

@@ -25,33 +25,32 @@
         <a href="#">Meals</a>
         <a href="#">Testimonials</a>
         <a href="#">Pricing</a>
+        <a href="#" class="btn-primary mobile-btn" style="color: white"
+          >Try for free</a
+        >
       </nav>
-      <a href="#" class="btn-primary mobile-btn">Try for free</a>
-      <!-- Hamburger (open) icon -->
+      <a href="#" class="btn-primary">Try for free</a>
+
       <div class="menu" id="openMenu">
         <i class="fa-solid fa-bars"></i>
       </div>
 
-      <!-- Close (X) icon -->
       <div class="menu hide" id="closeMenu">
         <i class="fa-solid fa-xmark"></i>
       </div>
     </header>
   </body>
-
   <script>
     const openMenu = document.getElementById("openMenu");
     const closeMenu = document.getElementById("closeMenu");
     const navLinks = document.getElementById("navLinks");
     const logo = document.getElementById("logo");
-    const navbar = document.getElementById("navbar");
 
     openMenu.addEventListener("click", () => {
       navLinks.classList.add("active");
       openMenu.classList.add("hide");
       closeMenu.classList.remove("hide");
       logo.classList.add("hide");
-      navbar.classList.add("active");
     });
 
     closeMenu.addEventListener("click", () => {
