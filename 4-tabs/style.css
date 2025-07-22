@@ -1,38 +1,83 @@
-.tabs {
-    list-style: none;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    border-bottom: solid gray 1px;
-}
-
-.tab {
-    padding: 20px 15px;
-}
-
-.tab-content {
-    background-color: #f9fafb;
-    padding: 1rem 2rem;
-    max-width: 600px;
-    margin: 0 auto;
-    display: none;
-
-}
-
 body {
-    font-family: "Inter", sans-serif;
-    color: #37414c;
+    font-family: Arial, sans-serif;
+    padding: 20px;
 }
 
-span {
-    color: black;
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
 }
 
-.tab.active {
-    color: #227aef;
-    border-bottom: 2px solid #227aef;
+.card {
+    width: 280px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding-bottom: 12px;
+    background: white;
 }
 
-.tab-content.active {
-    display: block;
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card h3 {
+    padding: 10px 12px 0;
+    font-size: 1rem;
+}
+
+.card p {
+    padding: 0 12px 10px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+/* Pagination Styling */
+.pagination {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    margin-top: 20px;
+    flex-wrap: wrap;
+}
+
+.pagination button {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.pagination button:hover:not(:disabled) {
+    background: #e0e0e0;
+}
+
+.pagination button.active {
+    background: #007bff;
+    color: white;
+    font-weight: bold;
+    border-color: #007bff;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pagination .dots {
+    padding: 6px 10px;
+    font-size: 14px;
+    color: #999;
+}
+
+.disabled-btn {
+    background-color: #ccc !important;
+    color: #ccc !important;
 }
